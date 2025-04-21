@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class BankAccount {
+private:
+    string accountNumber;
+    string accountHolderName;
+    double balance;
+
+public:
+    // Constructor
+    BankAccount(string accNumber, string accHolder, double bal = 0.0) {
+        accountNumber = accNumber;
+        accountHolderName = accHolder;
+        balance = bal;
+    }
+
+    // Deposit function
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited: $" << amount << endl;
+        } else {
+            cout << "Deposit amount must be positive." << endl;
+        }
+    }
+
+    // Withdraw function
+    void withdraw(double amount) {
+        if (amount <= 0) {
+            cout << "Withdrawal amount must be positive." << endl;
+        } else if (amount > balance) {
+            cout << "Insufficient balance. Withdrawal denied." << endl;
+        } else {
+            balance -= amount;
+            cout << "Withdrew: $" << amount << endl;
+        }
+    }
+
+    // Display account details
+    void display() const {
+        cout << "Account Details:" << endl;
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Account Holder: " << accountHolderName << endl;
+        cout << "Balance: $" << balance << endl;
+    }
+};
+
+// Example usage
+int main() {
+    BankAccount account1("123456", "John Doe", 500.0);
+
+    account1.display();
+    account1.deposit(200);
+    account1.withdraw(100);
+    account1.withdraw(700); // Should not allow overdraft
+    account1.display();
+
+    return 0;
+}
+
+Output (example):
+
+Account Details:
+Account Number: 123456
+Account Holder: John Doe
+Balance: $500
+Deposited: $200
+Withdrew: $100
+Insufficient balance. Withdrawal denied.
+Account Details:
+Account Number: 123456
+Account Holder: John Doe
+Balance: $600
+
+Let me know if you'd like to extend this program with features like multiple accounts, interest rates, or file handling!
