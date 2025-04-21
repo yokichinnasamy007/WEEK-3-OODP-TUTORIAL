@@ -1,0 +1,118 @@
+Class Diagram (Text-Based Representation)
+
++--------------------+
+|      Voter         |
++--------------------+
+| - voterID: int     |
+| - name: string     |
+| - age: int         |
+| - hasVoted: bool   |
++--------------------+
+| + register()       |
+| + vote()           |
+| + displayInfo()    |
++--------------------+
+
+          |
+          | uses
+          v
+
++--------------------+
+|     Election       |
++--------------------+
+| - electionID: int  |
+| - title: string    |
+| - candidates: vector<Candidate> |
++--------------------+
+| + startElection()  |
+| + endElection()    |
+| + displayResults() |
++--------------------+
+
+          |
+          | contains
+          v
+
++-----------------------+
+|     Candidate         |
++-----------------------+
+| - candidateID: int    |
+| - name: string        |
+| - party: string       |
+| - votesReceived: int  |
++-----------------------+
+| + displayInfo()       |
+| + receiveVote()       |
++-----------------------+
+
+          |
+          | managed by
+          v
+
++--------------------+
+|    Admin           |
++--------------------+
+| - adminID: int     |
+| - username: string |
+| - password: string |
++--------------------+
+| + addCandidate()   |
+| + removeCandidate()|
+| + viewVoters()     |
++--------------------+
+
+
+---
+
+C++ Class Declarations
+
+
+
+class Voter {
+private:
+    int voterID;
+    string name;
+    int age;
+    bool hasVoted;
+
+public:
+    void registerVoter();
+    void vote();
+    void displayInfo();
+};
+
+class Candidate {
+private:
+    int candidateID;
+    string name;
+    string party;
+    int votesReceived;
+
+public:
+    void displayInfo();
+    void receiveVote();
+};
+
+class Election {
+private:
+    int electionID;
+    string title;
+    vector<Candidate> candidates;
+
+public:
+    void startElection();
+    void endElection();
+    void displayResults();
+};
+
+class Admin {
+private:
+    int adminID;
+    string username;
+    string password;
+
+public:
+    void addCandidate();
+    void removeCandidate();
+    void viewVoters();
+};
