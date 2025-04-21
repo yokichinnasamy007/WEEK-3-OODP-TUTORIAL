@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+class Car {
+private:
+    string brand;
+    string model;
+    double price;
+    int year;
+
+public:
+    static int totalCars;
+
+    // Constructor to initialize attributes
+    Car(string b, string m, double p, int y) {
+        brand = b;
+        model = m;
+        price = p;
+        year = y;
+        totalCars++;  // Increment the static variable whenever a new Car is created
+    }
+
+    // Function to display car details
+    void display() {
+        cout << "Brand: " << brand << ", Model: " << model
+             << ", Price: $" << price << ", Year: " << year << endl;
+    }
+
+    // Static function to display total cars
+    static void showTotalCars() {
+        cout << "Total Cars in Inventory: " << totalCars << endl;
+    }
+};
+
+// Initialize the static member variable
+int Car::totalCars = 0;
+
+int main() {
+    Car car1("Toyota", "Camry", 25000, 2022);
+    Car car2("Honda", "Civic", 22000, 2023);
+    Car car3("Ford", "Mustang", 35000, 2021);
+
+    car1.display();
+    car2.display();
+    car3.display();
+
+    Car::showTotalCars();
+
+    return 0;
+}
+
+Output Example:
+
+Brand: Toyota, Model: Camry, Price: $25000, Year: 2022
+Brand: Honda, Model: Civic, Price: $22000, Year: 2023
+Brand: Ford, Model: Mustang, Price: $35000, Year: 2021
+Total Cars in Inventory: 3
+
+Let me know if you want to add features like deleting cars, searching, or listing based on filters like brand or year.
