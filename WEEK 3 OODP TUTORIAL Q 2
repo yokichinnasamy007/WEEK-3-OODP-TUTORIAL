@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+private:
+    string studentID;
+    string name;
+    float marks[5];
+
+public:
+    // Constructor to initialize student details
+    Student(string id, string n, float m[5]) {
+        studentID = id;
+        name = n;
+        for (int i = 0; i < 5; i++) {
+            marks[i] = m[i];
+        }
+    }
+
+    // Function to calculate average marks
+    float calculateAverage() const {
+        float total = 0;
+        for (int i = 0; i < 5; i++) {
+            total += marks[i];
+        }
+        return total / 5;
+    }
+
+    // Function to display student details
+    void displayDetails() const {
+        cout << "Student ID: " << studentID << endl;
+        cout << "Name: " << name << endl;
+        cout << "Marks: ";
+        for (int i = 0; i < 5; i++) {
+            cout << marks[i] << " ";
+        }
+        cout << endl;
+        cout << "Average Marks: " << calculateAverage() << endl;
+        cout << "--------------------------" << endl;
+    }
+};
+
+// Example usage
+int main() {
+    float marks1[5] = {85, 78, 92, 88, 76};
+    float marks2[5] = {90, 85, 87, 80, 82};
+
+    Student student1("S001", "Alice", marks1);
+    Student student2("S002", "Bob", marks2);
+
+    student1.displayDetails();
+    student2.displayDetails();
+
+    return 0;
+}
+
+Example Output:
+
+Student ID: S001
+Name: Alice
+Marks: 85 78 92 88 76 
+Average Marks: 83.8
+--------------------------
+Student ID: S002
+Name: Bob
+Marks: 90 85 87 80 82 
+Average Marks: 84.8
+--------------------------
+
+Let me know if you'd like to extend this to handle input from the user or store more students dynamically!
